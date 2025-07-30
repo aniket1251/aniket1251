@@ -83,4 +83,4 @@
  
 ## ❤ Views and Followers
 
-<a href="https://github.com/aniket1251?tab=followers"><img src="https://img.shields.io/github/followers/aniket1251?label=Followers&style=social" alt="GitHub Badge"></a>        ![Profile views](https://gpvc.arturio.dev/aniket1251)  
+<a href="https://github.com/aniket1251?tab=followers"><img src="https://img.shields.io/github/followers/aniket1251?label=Followers&style=social" alt="GitHub Badge"></a>        ![](https://komarev.com/ghpvc/?username=aniket1251)  
