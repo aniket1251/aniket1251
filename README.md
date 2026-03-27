@@ -1,86 +1,145 @@
-<a href="#"><img width="100%" height="auto" src="https://i.imgur.com/iXuL1HG.png" height="175px"/></a>
+<!-- ╔══════════════════════════════════════════════════════════════════╗ -->
+<!-- ║                      A N I K E T   G A U T A M                 ║ -->
+<!-- ╚══════════════════════════════════════════════════════════════════╝ -->
 
-<h1 align="center">Hi <img src="https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width="30px">, I'm Aniket
-<h3 align="center">I'm a passionate Web Developer from India.</h3>
-
- ## 🙋‍♂️ About Me
-
-
-- 🌱 I’m currently learning **Go**
- 
-- 🔥 I'm also enhancing myself in the field of **MERN** 
-
-- 👯 I’m looking to collaborate on **OpenSource Projects**
-
-<!-- - 👨‍💻 All of my projects are available at **[My Projects](https://github.com/aniket1251/My-Projects)** -->
- 
-<!-- - 🖋️ I love to write technology-based articles. Check them out at **[My Articles]()**  -->
-
-- 📫 How to reach me **ag125aa@gmail.com**
-
-## 🚀 Languages and Tools:
-
-<p align="left"> 
-    <a href="https://reactjs.org/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/react-native.png"/> </a> 
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://img.icons8.com/color/48/000000/javascript.png"/> </a> 
-    <a href="https://www.w3.org/html/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/html-5.png"/> </a> 
-    <a href="https://www.w3schools.com/css/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/css3.png"/> </a> 
-    <a href="https://getbootstrap.com" target="_blank"> <img src="https://img.icons8.com/color/48/000000/bootstrap.png"/> </a> 
-    <a href="https://www.python.org" target="_blank"> <img src="https://img.icons8.com/color/48/000000/python.png"/> </a> 
-    <a style="padding-right:8px;" href="https://nodejs.org" target="_blank"> <img src="https://img.icons8.com/color/48/000000/nodejs.png"/> </a> 
-    <a style="padding-right:8px;" href="https://www.mysql.com/" target="_blank"> <img src="https://img.icons8.com/fluent/50/000000/mysql-logo.png"/> </a>
-    <a href="https://www.mongodb.com/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="48" height="48"/> </a> 
-    <a href="https://www.cprogramming.com/" target="_blank"> <img src="https://isocpp.org/assets/images/cpp_logo.png" alt="C++" width="40" height="40"/> </a>
-    <a href="https://www.cprogramming.com/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/c-programming.png" alt="C" width="40" height="40"/> </a>
-    <a href="https://redux.js.org/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/redux.png" alt="redux" width="40" height="40"/> </a>
-    <a href="https://firebase.google.com/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/firebase.png"/> </a> 
-    <a href="https://golang.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/go/go-original.svg" alt="go" width="40" height="40"/> </a>
-    <a href="https://postman.com" target="_blank"> <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="postman" width="45" height="45"/> </a>   
-    <a href="https://git-scm.com/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/git.png"/> </a> 
-    <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a>
-    <a href="https://sass-lang.com/" target="_blank"> <img src="https://img.icons8.com/color/144/000000/sass.png" alt="sass" width="40" height="40"/> </a>
-    <a href="https://www.linux.org/" target="_blank"> <img src="https://img.icons8.com/color/48/000000/linux--v1.png" alt="linux" width="40" height="40"/> </a>
-    <a href="https://babeljs.io/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/babeljs/babeljs-icon.svg" alt="babel" width="40" height="40"/> </a>
-    <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
-    <a href="https://heroku.com" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"> </a>
-</p>
- 
-<p align="center">
-    <a href="https://github.com/aniket1251/github-readme-streak-stats">
-        <img title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="aniket1251's streak" src="https://github-readme-streak-stats.herokuapp.com/?user=aniket1251&theme=onedark_duo&hide_border=true&stroke=0000&background=060A0CD0"/>
-    </a>
-</p>
- 
 <div align="center">
 
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1b27,25:6366f1,50:a855f7,75:6366f1,100:1a1b27&height=220&section=header&text=Aniket%20Gautam&fontSize=50&fontAlignY=35&fontColor=ffffff&animation=fadeIn&desc=Software%20Engineer%20%C2%B7%20ML%20Practitioner%20%C2%B7%20System%20Architect&descSize=16&descAlignY=55&descColor=e2e8f0" width="100%" />
 
- 
-# 📊 My Github Stats
+<br>
 
-  <br/>
-    <a href="https://github.com/aniket1251/github-readme-stats"><img alt="Aniket Gautam's Github Stats" src="https://github-readme-stats.vercel.app/api?username=aniket1251&show_icons=true&count_private=true&theme=gruvbox&hide_border=true&bg_color=0D1117" /></a>
+<a href="https://aniketgautam.vercel.app"><img src="https://img.shields.io/badge/Portfolio-6366f1?style=for-the-badge&logo=vercel&logoColor=white" /></a>&nbsp;
+<a href="https://www.linkedin.com/in/aniket-gautam-3b9b69205/"><img src="https://img.shields.io/badge/LinkedIn-6366f1?style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;
+<a href="mailto:ag125aa@gmail.com"><img src="https://img.shields.io/badge/Email-6366f1?style=for-the-badge&logo=gmail&logoColor=white" /></a>
 
-  <a href="https://github.com/aniket1251/github-readme-stats"><img alt="Aniket Gautam's Top Languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=aniket1251&langs_count=8&count_private=true&layout=compact&theme=gruvbox&hide_border=true&bg_color=0D1117" /></a>
-  <br/>
+<br><br>
 
-  <b>Note:</b> Top languages is only a metric of the languages my public code consists of and doesn't reflect experience or skill level.
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=A855F7&center=true&vCenter=true&repeat=true&width=500&height=30&lines=Architecting+systems+that+scale.;Training+models+that+learn.;Writing+code+that+lasts." />
 
+</div>
 
-<br/>
-<br/>
-<a href="https://github.com/aniket1251/github-readme-activity-graph"><img alt="Aniket Gautam's Activity Graph" src="https://activity-graph.herokuapp.com/graph?username=aniket1251&bg_color=0D1117&color=FFBF00&line=93C572&point=FFFFFF&hide_border=true" /></a>
-<br/>
-<br/>
+<br>
 
-## Connect with me:
-<p align="left">
+---
 
-<a href = "https://www.linkedin.com/in/aniket-gautam-3b9b69205/"><img src="https://img.icons8.com/fluent/48/000000/linkedin.png"/></a>
-<a href = "https://www.instagram.com/aniket._.gautam/"><img src="https://img.icons8.com/fluent/48/000000/instagram-new.png"/></a>
-<!-- <a href = ""><img src="https://img.icons8.com/fluent/48/000000/twitter.png"/></a> -->
-</p>
+<br>
 
- 
-## ❤ Views and Followers
+<div align="center">
 
-<a href="https://github.com/aniket1251?tab=followers"><img src="https://img.shields.io/github/followers/aniket1251?label=Followers&style=social" alt="GitHub Badge"></a>        ![](https://komarev.com/ghpvc/?username=aniket1251)  
+### About Me
+
+</div>
+
+```yaml
+name:       Aniket Gautam
+location:   India
+role:       Software Engineer & ML Practitioner
+
+currently:
+  - building scalable full-stack systems with Next.js & AWS
+  - exploring deep learning for edge & real-time inference
+  - designing high-throughput backend architectures
+
+interests:  [ distributed systems, computer vision, MLOps, open source ]
+```
+
+<br>
+
+---
+
+<br>
+
+<!-- ── TECH STACK ─────────────────────────────────────────────────── -->
+
+<div align="center">
+
+### Tech Stack
+
+<a href="https://www.typescriptlang.org/docs/"><img src="https://skillicons.dev/icons?i=ts&theme=dark" alt="TypeScript" /></a>&nbsp;&nbsp;
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://skillicons.dev/icons?i=js&theme=dark" alt="JavaScript" /></a>&nbsp;&nbsp;
+<a href="https://docs.python.org/3/"><img src="https://skillicons.dev/icons?i=python&theme=dark" alt="Python" /></a>&nbsp;&nbsp;
+<a href="https://en.cppreference.com/"><img src="https://skillicons.dev/icons?i=cpp&theme=dark" alt="C++" /></a>&nbsp;&nbsp;
+<a href="https://en.cppreference.com/w/c"><img src="https://skillicons.dev/icons?i=c&theme=dark" alt="C" /></a>&nbsp;&nbsp;
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://skillicons.dev/icons?i=html&theme=dark" alt="HTML" /></a>&nbsp;&nbsp;
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://skillicons.dev/icons?i=css&theme=dark" alt="CSS" /></a>&nbsp;&nbsp;
+<a href="https://nextjs.org/docs"><img src="https://skillicons.dev/icons?i=nextjs&theme=dark" alt="Next.js" /></a>&nbsp;&nbsp;
+<a href="https://react.dev"><img src="https://skillicons.dev/icons?i=react&theme=dark" alt="React" /></a>&nbsp;&nbsp;
+<a href="https://nodejs.org/docs/latest/api/"><img src="https://skillicons.dev/icons?i=nodejs&theme=dark" alt="Node.js" /></a>&nbsp;&nbsp;
+<a href="https://expressjs.com"><img src="https://skillicons.dev/icons?i=express&theme=dark" alt="Express" /></a>&nbsp;&nbsp;
+<a href="https://redux.js.org"><img src="https://skillicons.dev/icons?i=redux&theme=dark" alt="Redux" /></a>&nbsp;&nbsp;
+<a href="https://tailwindcss.com/docs"><img src="https://skillicons.dev/icons?i=tailwind&theme=dark" alt="Tailwind CSS" /></a>&nbsp;&nbsp;
+<a href="https://sass-lang.com/documentation/"><img src="https://skillicons.dev/icons?i=sass&theme=dark" alt="Sass" /></a>&nbsp;&nbsp;
+<a href="https://www.tensorflow.org/api_docs"><img src="https://skillicons.dev/icons?i=tensorflow&theme=dark" alt="TensorFlow" /></a>&nbsp;&nbsp;
+<a href="https://pytorch.org/docs/"><img src="https://skillicons.dev/icons?i=pytorch&theme=dark" alt="PyTorch" /></a>&nbsp;&nbsp;
+<a href="https://docs.opencv.org"><img src="https://skillicons.dev/icons?i=opencv&theme=dark" alt="OpenCV" /></a>&nbsp;&nbsp;
+<a href="https://scikit-learn.org"><img src="https://skillicons.dev/icons?i=sklearn&theme=dark" alt="Scikit-learn" /></a>&nbsp;&nbsp;
+<a href="https://aws.amazon.com/documentation/"><img src="https://skillicons.dev/icons?i=aws&theme=dark" alt="AWS" /></a>&nbsp;&nbsp;
+<a href="https://docs.docker.com"><img src="https://skillicons.dev/icons?i=docker&theme=dark" alt="Docker" /></a>&nbsp;&nbsp;
+<a href="https://kubernetes.io/docs/"><img src="https://skillicons.dev/icons?i=kubernetes&theme=dark" alt="Kubernetes" /></a>&nbsp;&nbsp;
+<a href="https://www.postgresql.org/docs/"><img src="https://skillicons.dev/icons?i=postgres&theme=dark" alt="PostgreSQL" /></a>&nbsp;&nbsp;
+<a href="https://dev.mysql.com/doc/"><img src="https://skillicons.dev/icons?i=mysql&theme=dark" alt="MySQL" /></a>&nbsp;&nbsp;
+<a href="https://www.mongodb.com/docs/"><img src="https://skillicons.dev/icons?i=mongodb&theme=dark" alt="MongoDB" /></a>&nbsp;&nbsp;
+<a href="https://redis.io/docs/"><img src="https://skillicons.dev/icons?i=redis&theme=dark" alt="Redis" /></a>&nbsp;&nbsp;
+<a href="https://www.kernel.org/doc/html/latest/"><img src="https://skillicons.dev/icons?i=linux&theme=dark" alt="Linux" /></a>&nbsp;&nbsp;
+<a href="https://git-scm.com/doc"><img src="https://skillicons.dev/icons?i=git&theme=dark" alt="Git" /></a>&nbsp;&nbsp;
+<a href="https://docs.github.com"><img src="https://skillicons.dev/icons?i=github&theme=dark" alt="GitHub" /></a>
+
+</div>
+
+<br>
+
+---
+
+<br>
+
+<!-- ── GITHUB STATS ──────────────────────────────────────────────── -->
+
+<div align="center">
+
+### GitHub Analytics
+
+<img src="https://github-readme-stats.vercel.app/api?username=aniket1251&show_icons=true&hide_border=true&bg_color=1a1b27&title_color=a855f7&text_color=e2e8f0&icon_color=6366f1&ring_color=a855f7&include_all_commits=true&count_private=true" />&nbsp;
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=aniket1251&layout=compact&hide_border=true&bg_color=1a1b27&title_color=a855f7&text_color=e2e8f0&langs_count=6" />
+
+<br><br>
+
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=aniket1251&hide_border=true&background=1a1b27&ring=a855f7&fire=6366f1&currStreakLabel=a855f7&sideNums=e2e8f0&currStreakNum=e2e8f0&sideLabels=94a3b8&dates=64748b" />
+
+<br><br>
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=aniket1251&bg_color=1a1b27&color=a855f7&line=6366f1&point=e2e8f0&area=true&area_color=6366f1&hide_border=true" width="95%" />
+
+</div>
+
+<br>
+
+---
+
+<br>
+
+<!-- ── SNAKE ──────────────────────────────────────────────────────── -->
+
+<div align="center">
+
+### Contributions Snake
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake.svg" />
+  <img src="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake-dark.svg" width="100%" />
+</picture>
+</div>
+
+<br>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────── -->
+
+<div align="center">
+
+<a href="https://github.com/aniket1251"><img src="https://komarev.com/ghpvc/?username=aniket1251&style=flat-square&color=6366f1&label=Profile+Views" /></a>
+
+<br><br>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1b27,25:6366f1,50:a855f7,75:6366f1,100:1a1b27&section=footer&height=100&text=Let's%20build%20something%20amazing&fontSize=20&fontAlignY=75&fontColor=ffffff&animation=fadeIn" width="100%" />
+
+</div>
