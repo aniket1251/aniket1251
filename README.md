@@ -98,8 +98,8 @@ interests:  [ distributed systems, computer vision, MLOps, open source ]
 
 ### GitHub Analytics
 
-<img src="https://github-readme-stats.vercel.app/api?username=aniket1251&show_icons=true&hide_border=true&bg_color=1a1b27&title_color=a855f7&text_color=e2e8f0&icon_color=6366f1&ring_color=a855f7&include_all_commits=true&count_private=true" />&nbsp;
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=aniket1251&layout=compact&hide_border=true&bg_color=1a1b27&title_color=a855f7&text_color=e2e8f0&langs_count=6" />
+<img src="https://github-readme-stats-sigma-five.vercel.app/api?username=aniket1251&show_icons=true&hide_border=true&bg_color=1a1b27&title_color=a855f7&text_color=e2e8f0&icon_color=6366f1&ring_color=a855f7&include_all_commits=true&count_private=true" />&nbsp;
+<img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=aniket1251&layout=compact&hide_border=true&bg_color=1a1b27&title_color=a855f7&text_color=e2e8f0&langs_count=6" />
 
 <br><br>
 
