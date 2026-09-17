@@ -36,23 +36,33 @@ jobs:
           committer_branch: metrics-output
           extras_css: |
             /* ---- Theme (matches README: indigo/purple on dark) ---- */
-            body, .background { fill: #1a1b27 !important; }
-            svg { background: #1a1b27 !important; }
-            h2, .title { fill: #a855f7 !important; color: #a855f7 !important; }
-            .field, text, tspan { fill: #e2e8f0 !important; }
-            .octicon, .icon svg { fill: #6366f1 !important; }
-            a, .repositories .field a { fill: #6366f1 !important; }
-
-            /* ---- Activity: keep commits, hide everything else ---- */
-            /* Order in activity block: commits, PRs, PR reviews, issues, comments */
-            .activity .field:not(:first-child) { display: none !important; }
-
-            /* ---- Repositories: keep stars, forks, watchers only ---- */
-            /* Hide the noisy lines: releases, packages, sponsors, licence, size, diff */
-            .repositories .field:nth-child(n+4) { display: none !important; }
-
-            /* Tighten spacing after hiding rows */
-            .row { margin: 0 !important; }
+            :root { background: #1a1b27 !important; }
+            svg, .background { fill: #1a1b27 !important; background: #1a1b27 !important; }
+            h2, .title { fill: #a855f7 !important; }
+            text, tspan, .field { fill: #e2e8f0 !important; }
+            .octicon { fill: #6366f1 !important; }
+            a { fill: #6366f1 !important; }
+          extras_js: |
+            // Remove specific stat lines by their visible text.
+            // Text-based so it survives DOM reordering between releases.
+            const REMOVE = [
+              "Pull requests reviewed",
+              "Pull requests opened",
+              "Issues opened",
+              "issue comments",
+              "license",
+              "Releases",
+              "Packages",
+              "MB used",
+              "Sponsors",
+              "added",   // "0 added, 0 removed" line
+            ];
+            document.querySelectorAll(".field").forEach(el => {
+              const t = (el.textContent || "").trim();
+              if (REMOVE.some(k => t.toLowerCase().includes(k.toLowerCase()))) {
+                el.remove();
+              }
+            });
 
       # Languages card
       - name: Generate languages metrics
@@ -73,8 +83,7 @@ jobs:
           plugin_languages_colors: github
           committer_branch: metrics-output
           extras_css: |
-            body, .background { fill: #1a1b27 !important; }
-            svg { background: #1a1b27 !important; }
+            svg, .background { fill: #1a1b27 !important; background: #1a1b27 !important; }
             h2, .title { fill: #a855f7 !important; }
             text, tspan, .field { fill: #e2e8f0 !important; }
             .octicon { fill: #6366f1 !important; }
@@ -95,8 +104,7 @@ jobs:
           plugin_isocalendar_duration: full-year
           committer_branch: metrics-output
           extras_css: |
-            body, .background { fill: #1a1b27 !important; }
-            svg { background: #1a1b27 !important; }
+            svg, .background { fill: #1a1b27 !important; background: #1a1b27 !important; }
             h2, .title { fill: #a855f7 !important; }
             text, tspan, .field { fill: #e2e8f0 !important; }
             .octicon { fill: #6366f1 !important; }
