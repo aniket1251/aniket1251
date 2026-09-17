@@ -31,16 +31,16 @@
 </div>
 
 ```yaml
-name:       Aniket Gautam
-location:   India
-role:       Software Engineer & ML Practitioner
+name: Aniket Gautam
+location: India
+role: Software Engineer & ML Practitioner
 
 currently:
   - building scalable full-stack systems with Next.js & AWS
   - exploring deep learning for edge & real-time inference
   - designing high-throughput backend architectures
 
-interests:  [ distributed systems, computer vision, MLOps, open source ]
+interests: [distributed systems, computer vision, MLOps, open source]
 ```
 
 <br>
@@ -98,16 +98,15 @@ interests:  [ distributed systems, computer vision, MLOps, open source ]
 
 ### GitHub Analytics
 
-<img src="https://github-readme-stats-sigma-five.vercel.app/api?username=aniket1251&show_icons=true&hide_border=true&bg_color=1a1b27&title_color=a855f7&text_color=e2e8f0&icon_color=6366f1&ring_color=a855f7&include_all_commits=true&count_private=true" />&nbsp;
-<img src="https://github-readme-stats-sigma-five.vercel.app/api/top-langs/?username=aniket1251&layout=compact&hide_border=true&bg_color=1a1b27&title_color=a855f7&text_color=e2e8f0&langs_count=6" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/metrics-output/metrics.svg" alt="GitHub metrics" />
 
 <br><br>
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=aniket1251&hide_border=true&background=1a1b27&ring=a855f7&fire=6366f1&currStreakLabel=a855f7&sideNums=e2e8f0&currStreakNum=e2e8f0&sideLabels=94a3b8&dates=64748b" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/metrics-output/metrics-languages.svg" alt="Most used languages" />
 
 <br><br>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=aniket1251&bg_color=1a1b27&color=a855f7&line=6366f1&point=e2e8f0&area=true&area_color=6366f1&hide_border=true" width="95%" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/metrics-output/metrics-calendar.svg" alt="Contribution calendar" width="95%" />
 
 </div>
 
