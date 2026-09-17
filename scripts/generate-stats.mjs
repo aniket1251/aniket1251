@@ -19,6 +19,7 @@ import { readFile, writeFile } from "node:fs/promises";
 const TOKEN = process.env.GH_TOKEN;
 const README_PATH = "README.md";
 const JSON_PATH = "stats.json";
+const GRAPH_PATH = "contribution-graph.svg";
 
 if (!TOKEN) {
   console.error("Missing GH_TOKEN environment variable.");
@@ -80,8 +81,107 @@ async function resolveLogin() {
   return data.viewer.login;
 }
 
+async function getTotalCommits(login) {
+  // contributionsCollection only covers a 1-year window, so query each
+  // year since the account was created and sum the commit contributions.
+  const created = await graphql(
+    `query ($login: String!) { user(login: $login) { createdAt } }`,
+    { login },
+  );
+  const startYear = new Date(created.user.createdAt).getUTCFullYear();
+  const endYear = new Date().getUTCFullYear();
+
+  let total = 0;
+  for (let year = startYear; year <= endYear; year++) {
+    const from = `${year}-01-01T00:00:00Z`;
+    const to = `${year}-12-31T23:59:59Z`;
+    const data = await graphql(
+      `query ($login: String!, $from: DateTime!, $to: DateTime!) {
+        user(login: $login) {
+          contributionsCollection(from: $from, to: $to) {
+            totalCommitContributions
+            restrictedContributionsCount
+          }
+        }
+      }`,
+      { login, from, to },
+    );
+    const c = data.user.contributionsCollection;
+    total += c.totalCommitContributions + c.restrictedContributionsCount;
+  }
+  return total;
+}
+
+async function getContributionCalendar(login) {
+  const data = await graphql(
+    `query ($login: String!) {
+      user(login: $login) {
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                contributionCount
+                date
+              }
+            }
+          }
+        }
+      }
+    }`,
+    { login },
+  );
+  return data.user.contributionsCollection.contributionCalendar;
+}
+
+function renderContributionGraph(calendar) {
+  const weeks = calendar.weeks;
+  const cell = 11; // size of each day square
+  const gap = 3;
+  const left = 8;
+  const top = 8;
+  const cols = weeks.length;
+  const width = left * 2 + cols * (cell + gap);
+  const height = top * 2 + 7 * (cell + gap);
+
+  // Color scale from theme (dark -> indigo -> purple).
+  const max = Math.max(
+    1,
+    ...weeks.flatMap((w) => w.contributionDays.map((d) => d.contributionCount)),
+  );
+  const scale = (n) => {
+    if (n === 0) return "#232640";
+    const t = n / max;
+    if (t < 0.25) return "#3b3f6b";
+    if (t < 0.5) return "#6366f1";
+    if (t < 0.75) return "#8b5cf6";
+    return "#a855f7";
+  };
+
+  let rects = "";
+  weeks.forEach((w, x) => {
+    w.contributionDays.forEach((d) => {
+      const day = new Date(d.date).getUTCDay();
+      const cx = left + x * (cell + gap);
+      const cy = top + day * (cell + gap);
+      rects += `<rect x="${cx}" y="${cy}" width="${cell}" height="${cell}" rx="2" fill="${scale(
+        d.contributionCount,
+      )}"><title>${d.date}: ${d.contributionCount}</title></rect>`;
+    });
+  });
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="Contribution graph">
+  <rect width="${width}" height="${height}" fill="#1a1b27"/>
+  ${rects}
+</svg>
+`;
+}
+
 async function buildStats(login) {
-  // Aggregate contribution + repo data. Repos are paginated.
+  const totalCommits = await getTotalCommits(login);
+  const calendar = await getContributionCalendar(login);
+
+  // Aggregate profile + repo data. Repos are paginated.
   const repos = [];
   let cursor = null;
   let hasNext = true;
@@ -99,10 +199,6 @@ async function buildStats(login) {
             }
             following {
               totalCount
-            }
-            contributionsCollection {
-              totalCommitContributions
-              restrictedContributionsCount
             }
             repositories(
               first: 100
@@ -154,9 +250,7 @@ async function buildStats(login) {
         name: user.name,
         followers: user.followers.totalCount,
         following: user.following.totalCount,
-        totalCommits:
-          user.contributionsCollection.totalCommitContributions +
-          user.contributionsCollection.restrictedContributionsCount,
+        totalCommits,
       };
       profile.totalRepos = user.repositories.totalCount;
     }
@@ -188,7 +282,9 @@ async function buildStats(login) {
     totalStars,
     totalForks,
     totalWatchers,
+    totalContributions: calendar.totalContributions,
     topLanguages,
+    _calendar: calendar,
     generatedAt: new Date().toISOString(),
   };
 }
@@ -250,14 +346,21 @@ async function main() {
   const login = await resolveLogin();
   const stats = await buildStats(login);
 
-  await writeFile(JSON_PATH, JSON.stringify(stats, null, 2) + "\n");
+  // Render our own contribution graph SVG (no third-party service).
+  await writeFile(GRAPH_PATH, renderContributionGraph(stats._calendar));
+
+  // Keep stats.json clean: drop the raw calendar used only for rendering.
+  const { _calendar, ...publicStats } = stats;
+  await writeFile(JSON_PATH, JSON.stringify(publicStats, null, 2) + "\n");
 
   const readme = await readFile(README_PATH, "utf8");
-  const updated = injectIntoReadme(readme, renderMarkdown(stats));
+  const updated = injectIntoReadme(readme, renderMarkdown(publicStats));
   await writeFile(README_PATH, updated);
 
-  console.log("Stats written to stats.json and injected into README.md");
-  console.log(JSON.stringify(stats, null, 2));
+  console.log(
+    "Wrote stats.json, contribution-graph.svg, and updated README.md",
+  );
+  console.log(JSON.stringify(publicStats, null, 2));
 }
 
 main().catch((err) => {

@@ -122,7 +122,7 @@ interests: [distributed systems, computer vision, MLOps, open source]
 
 <br><br>
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=aniket1251&bg_color=1a1b27&color=a855f7&line=6366f1&point=e2e8f0&area=true&area_color=6366f1&hide_border=true" width="95%" alt="Contribution graph" />
+<img src="./contribution-graph.svg" width="95%" alt="Contribution graph" />
 
 </div>
 
