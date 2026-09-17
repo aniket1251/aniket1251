@@ -1,0 +1,62 @@
+{
+  "login": "aniket1251",
+  "name": "Aniket Gautam",
+  "followers": 3,
+  "following": 8,
+  "totalCommits": 342,
+  "totalRepos": 32,
+  "totalStars": 5,
+  "totalForks": 3,
+  "totalWatchers": 13,
+  "topLanguages": [
+    {
+      "name": "Jupyter Notebook",
+      "bytes": 10565927
+    },
+    {
+      "name": "TypeScript",
+      "bytes": 5645807
+    },
+    {
+      "name": "JavaScript",
+      "bytes": 733505
+    },
+    {
+      "name": "CSS",
+      "bytes": 96493
+    },
+    {
+      "name": "TeX",
+      "bytes": 88053
+    },
+    {
+      "name": "C++",
+      "bytes": 53440
+    },
+    {
+      "name": "Python",
+      "bytes": 22088
+    },
+    {
+      "name": "HTML",
+      "bytes": 10839
+    },
+    {
+      "name": "EJS",
+      "bytes": 3514
+    },
+    {
+      "name": "Dockerfile",
+      "bytes": 1659
+    },
+    {
+      "name": "Procfile",
+      "bytes": 50
+    },
+    {
+      "name": "Shell",
+      "bytes": 39
+    }
+  ],
+  "generatedAt": "2026-09-17T10:46:38.424Z"
+}
