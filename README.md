@@ -135,9 +135,9 @@ interests: [distributed systems, computer vision, MLOps, open source]
 ### Contributions Snake
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake.svg" />
-  <img src="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake-dark.svg" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake-dark.svg?v=2" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake.svg?v=2" />
+  <img src="https://raw.githubusercontent.com/aniket1251/aniket1251/output/github-snake-dark.svg?v=2" width="100%" />
 </picture>
 </div>
 
