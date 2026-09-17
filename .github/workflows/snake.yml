@@ -22,9 +22,11 @@ jobs:
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: ${{ github.repository_owner }}
+          # Themed to match the profile: purple snake, indigo→purple dots,
+          # dark indigo background. color_dots go from empty → most active.
           outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
+            dist/github-snake.svg?color_snake=%23a855f7&color_dots=%23232640,%233b3f6b,%236366f1,%238b5cf6,%23a855f7&color_background=%231a1b27
+            dist/github-snake-dark.svg?color_snake=%23a855f7&color_dots=%23232640,%233b3f6b,%236366f1,%238b5cf6,%23a855f7&color_background=%231a1b27
 
       - name: Push to output branch
         uses: crazy-max/ghaction-github-pages@v4

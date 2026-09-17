@@ -120,10 +120,6 @@ interests: [distributed systems, computer vision, MLOps, open source]
 </div>
 <!--STATS:END-->
 
-<br><br>
-
-<img src="./contribution-graph.svg" width="95%" alt="Contribution graph" />
-
 </div>
 
 <br>

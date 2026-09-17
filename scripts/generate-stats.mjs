@@ -179,7 +179,8 @@ function renderContributionGraph(calendar) {
 
 async function buildStats(login) {
   const totalCommits = await getTotalCommits(login);
-  const calendar = await getContributionCalendar(login);
+  // Contribution graph disabled for now (kept for later re-enable):
+  // const calendar = await getContributionCalendar(login);
 
   // Aggregate profile + repo data. Repos are paginated.
   const repos = [];
@@ -282,9 +283,9 @@ async function buildStats(login) {
     totalStars,
     totalForks,
     totalWatchers,
-    totalContributions: calendar.totalContributions,
+    // totalContributions: calendar.totalContributions,
     topLanguages,
-    _calendar: calendar,
+    // _calendar: calendar,
     generatedAt: new Date().toISOString(),
   };
 }
@@ -346,8 +347,8 @@ async function main() {
   const login = await resolveLogin();
   const stats = await buildStats(login);
 
-  // Render our own contribution graph SVG (no third-party service).
-  await writeFile(GRAPH_PATH, renderContributionGraph(stats._calendar));
+  // Contribution graph disabled for now (kept for later re-enable):
+  // await writeFile(GRAPH_PATH, renderContributionGraph(stats._calendar));
 
   // Keep stats.json clean: drop the raw calendar used only for rendering.
   const { _calendar, ...publicStats } = stats;
