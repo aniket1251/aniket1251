@@ -98,15 +98,12 @@ interests: [distributed systems, computer vision, MLOps, open source]
 
 ### GitHub Analytics
 
-<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/metrics-output/metrics.svg" alt="GitHub metrics" />
+<!--STATS:START-->
+<!--STATS:END-->
 
 <br><br>
 
-<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/metrics-output/metrics-languages.svg" alt="Most used languages" />
-
-<br><br>
-
-<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/metrics-output/metrics-calendar.svg" alt="Contribution calendar" width="95%" />
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=aniket1251&bg_color=1a1b27&color=a855f7&line=6366f1&point=e2e8f0&area=true&area_color=6366f1&hide_border=true" width="95%" alt="Contribution graph" />
 
 </div>
 
