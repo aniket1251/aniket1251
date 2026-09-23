@@ -102,7 +102,7 @@ interests: [distributed systems, computer vision, MLOps, open source]
 <div align="center">
 
 ![Commits](https://img.shields.io/badge/Commits-539-6366f1?style=for-the-badge&labelColor=1a1b27)
-![Stars](https://img.shields.io/badge/Stars-5-a855f7?style=for-the-badge&labelColor=1a1b27)
+![Stars](https://img.shields.io/badge/Stars-6-a855f7?style=for-the-badge&labelColor=1a1b27)
 ![Forks](https://img.shields.io/badge/Forks-3-6366f1?style=for-the-badge&labelColor=1a1b27)
 ![Watchers](https://img.shields.io/badge/Watchers-13-a855f7?style=for-the-badge&labelColor=1a1b27)
 ![Followers](https://img.shields.io/badge/Followers-3-6366f1?style=for-the-badge&labelColor=1a1b27)
