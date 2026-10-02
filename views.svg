@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="164" height="28" viewBox="0 0 164 28" role="img" aria-label="Profile Views: 0">
+  <defs>
+    <linearGradient id="vcount" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <clipPath id="vround">
+      <rect width="164" height="28" rx="6"/>
+    </clipPath>
+  </defs>
+  <style>
+    .vlabel { font: 600 14px 'Segoe UI', Ubuntu, sans-serif; fill: #e2e8f0; }
+    .vvalue { font: 700 14px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
+  </style>
+  <g clip-path="url(#vround)">
+    <rect width="130" height="28" fill="#1a1b27"/>
+    <rect x="130" width="34" height="28" fill="url(#vcount)"/>
+  </g>
+  <rect x="0.5" y="0.5" width="163" height="27" rx="6" fill="none" stroke="#6366f1" stroke-width="1" opacity="0.5"/>
+  <text x="65" y="18.666666666666668" text-anchor="middle" class="vlabel">Profile Views</text>
+  <text x="147" y="18.666666666666668" text-anchor="middle" class="vvalue">0</text>
+</svg>

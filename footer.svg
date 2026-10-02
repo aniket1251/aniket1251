@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="120" viewBox="0 0 1200 120" role="img" aria-label="Let's build something amazing">
+  <defs>
+    <linearGradient id="g_footer" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1b27"/>
+      <stop offset="25%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="75%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#1a1b27"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .bTitle { font: 700 54px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
+    .bSub { font: 400 17px 'Segoe UI', Ubuntu, sans-serif; fill: #e2e8f0; }
+    .bFoot { font: 600 22px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
+    @keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(-120px); } }
+    .wave { animation: drift 8s linear infinite; }
+  </style>
+  <rect width="1200" height="120" fill="url(#g_footer)"/>
+  <g class="wave" opacity="0.30">
+    <path d="M0 86 C 300 68, 420 104, 600 86 S 900 68, 1200 86 V 120 H 0 Z" fill="#1a1b27"/>
+  </g>
+  <g opacity="0.45">
+    <path d="M0 100 C 300 82, 420 118, 600 100 S 900 82, 1200 100 V 120 H 0 Z" fill="#1a1b27"/>
+  </g>
+  
+  <text x="600" y="55" text-anchor="middle" class="bFoot">Let's build something amazing</text>
+</svg>
