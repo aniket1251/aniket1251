@@ -101,21 +101,7 @@ interests: [distributed systems, computer vision, MLOps, open source]
 <!--STATS:START-->
 <div align="center">
 
-![Commits](https://img.shields.io/badge/Commits-539-6366f1?style=for-the-badge&labelColor=1a1b27)
-![Stars](https://img.shields.io/badge/Stars-6-a855f7?style=for-the-badge&labelColor=1a1b27)
-![Forks](https://img.shields.io/badge/Forks-3-6366f1?style=for-the-badge&labelColor=1a1b27)
-![Watchers](https://img.shields.io/badge/Watchers-13-a855f7?style=for-the-badge&labelColor=1a1b27)
-![Followers](https://img.shields.io/badge/Followers-3-6366f1?style=for-the-badge&labelColor=1a1b27)
-
-<br>
-
-**Top Languages**
-
-![Jupyter Notebook](https://img.shields.io/badge/Jupyter%20Notebook-6366f1?style=for-the-badge&labelColor=1a1b27)
-![TypeScript](https://img.shields.io/badge/TypeScript-a855f7?style=for-the-badge&labelColor=1a1b27)
-![JavaScript](https://img.shields.io/badge/JavaScript-6366f1?style=for-the-badge&labelColor=1a1b27)
-![CSS](https://img.shields.io/badge/CSS-a855f7?style=for-the-badge&labelColor=1a1b27)
-![TeX](https://img.shields.io/badge/TeX-6366f1?style=for-the-badge&labelColor=1a1b27)
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/stats.svg?v=2026-09-17T11%3A03%3A32.939Z" alt="GitHub statistics" width="500" />
 
 </div>
 <!--STATS:END-->

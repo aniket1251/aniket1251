@@ -20,11 +20,12 @@ const TOKEN = process.env.GH_TOKEN;
 const README_PATH = "README.md";
 const JSON_PATH = "stats.json";
 const GRAPH_PATH = "contribution-graph.svg";
+const STATS_SVG_PATH = "stats.svg";
 
-if (!TOKEN) {
-  console.error("Missing GH_TOKEN environment variable.");
-  process.exit(1);
-}
+// Raw GitHub base used to reference committed SVGs (self-hosted, no 3rd party).
+const RAW_BASE = process.env.GH_USER
+  ? `https://raw.githubusercontent.com/${process.env.GH_USER}/${process.env.GH_USER}/master`
+  : null;
 
 // ── Theme (matches README palette) ─────────────────────────────────
 const THEME = {
@@ -296,36 +297,102 @@ function fmt(n) {
   return String(n);
 }
 
-function badge(label, value, color) {
-  const l = encodeURIComponent(label);
-  const v = encodeURIComponent(fmt(value));
-  return `![${label}](https://img.shields.io/badge/${l}-${v}-${color}?style=for-the-badge&labelColor=${THEME.label})`;
+function svgEscape(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+// Render the whole stats block as a single self-hosted SVG.
+// No third-party services — committed and served from raw.githubusercontent.com.
+function renderStatsSvg(stats) {
+  const statItems = RENDER.filter((f) => stats[f.key] !== undefined).map(
+    (f) => ({ label: f.label, value: fmt(stats[f.key]), color: `#${f.color}` }),
+  );
+
+  const langs = (stats.topLanguages ?? []).slice(0, TOP_LANGUAGES_COUNT);
+
+  const width = 500;
+  const padX = 24;
+  const titleY = 40;
+
+  // Stat rows: label left, value right.
+  const statStartY = 78;
+  const statGap = 34;
+  const statRows = statItems
+    .map((s, i) => {
+      const y = statStartY + i * statGap;
+      return `
+    <text x="${padX}" y="${y}" class="label">${svgEscape(s.label)}</text>
+    <text x="${width - padX}" y="${y}" class="value" fill="${s.color}" text-anchor="end">${svgEscape(s.value)}</text>
+    <line x1="${padX}" y1="${y + 10}" x2="${width - padX}" y2="${y + 10}" class="divider"/>`;
+    })
+    .join("");
+
+  // Language pills wrapped across lines.
+  const langTitleY = statStartY + statItems.length * statGap + 18;
+  const pillH = 26;
+  const pillGap = 10;
+  const lineGap = 12;
+  let px = padX;
+  let py = langTitleY + 18;
+  const pills = langs
+    .map((lang, i) => {
+      const text = lang.name;
+      const w = Math.max(60, 16 + text.length * 8);
+      if (px + w > width - padX) {
+        px = padX;
+        py += pillH + lineGap;
+      }
+      const color = (lang.color || `#${i % 2 ? THEME.purple : THEME.indigo}`);
+      const rect = `
+    <g>
+      <rect x="${px}" y="${py}" width="${w}" height="${pillH}" rx="13" fill="${THEME.label ? "#" + THEME.label : "#1a1b27"}" stroke="${color}" stroke-width="1.5"/>
+      <circle cx="${px + 15}" cy="${py + pillH / 2}" r="5" fill="${color}"/>
+      <text x="${px + 27}" y="${py + pillH / 2 + 4}" class="pill">${svgEscape(text)}</text>
+    </g>`;
+      px += w + pillGap;
+      return rect;
+    })
+    .join("");
+
+  const height = py + pillH + 24;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="GitHub statistics">
+  <style>
+    .title { font: 700 20px 'Segoe UI', Ubuntu, sans-serif; fill: #a855f7; }
+    .label { font: 600 15px 'Segoe UI', Ubuntu, sans-serif; fill: #e2e8f0; }
+    .value { font: 700 16px 'Segoe UI', Ubuntu, sans-serif; }
+    .section { font: 700 15px 'Segoe UI', Ubuntu, sans-serif; fill: #a855f7; }
+    .pill { font: 600 13px 'Segoe UI', Ubuntu, sans-serif; fill: #e2e8f0; }
+    .divider { stroke: #232640; stroke-width: 1; }
+  </style>
+  <rect width="${width}" height="${height}" rx="12" fill="#1a1b27"/>
+  <rect x="0.5" y="0.5" width="${width - 1}" height="${height - 1}" rx="12" fill="none" stroke="#6366f1" stroke-width="1" opacity="0.5"/>
+  <text x="${padX}" y="${titleY}" class="title">GitHub Analytics</text>
+  ${statRows}
+  <text x="${padX}" y="${langTitleY}" class="section">Top Languages</text>
+  ${pills}
+</svg>
+`;
 }
 
 function renderMarkdown(stats) {
-  const statBadges = RENDER.filter((f) => stats[f.key] !== undefined)
-    .map((f) => badge(f.label, stats[f.key], f.color))
-    .join("\n");
-
-  // Language badges use each language's real GitHub color (falls back to theme).
-  const langs = (stats.topLanguages ?? []).slice(0, TOP_LANGUAGES_COUNT);
-  const langBadges = langs
-    .map((lang, i) => {
-      const color = (lang.color || `#${i % 2 ? THEME.purple : THEME.indigo}`)
-        .replace(/^#/, "");
-      // shields.io renders text over the color; keep label empty-ish for a clean pill.
-      return `![${lang.name}](https://img.shields.io/badge/${encodeURIComponent(
-        lang.name
-      )}-${color}?style=for-the-badge&labelColor=${THEME.label})`;
-    })
-    .join("\n");
-
-  const parts = [`<div align="center">`, ``, statBadges];
-  if (langBadges) {
-    parts.push(``, `<br>`, ``, `**Top Languages**`, ``, langBadges);
-  }
-  parts.push(``, `</div>`);
-  return parts.join("\n");
+  // Self-hosted: reference the committed SVG from raw.githubusercontent.com
+  // (same reliable path as the snake). Cache-bust with the generated time.
+  const v = encodeURIComponent(stats.generatedAt || Date.now());
+  const src = RAW_BASE
+    ? `${RAW_BASE}/${STATS_SVG_PATH}?v=${v}`
+    : `${STATS_SVG_PATH}?v=${v}`;
+  return [
+    `<div align="center">`,
+    ``,
+    `<img src="${src}" alt="GitHub statistics" width="500" />`,
+    ``,
+    `</div>`,
+  ].join("\n");
 }
 
 function injectIntoReadme(readme, block) {
@@ -344,6 +411,10 @@ function injectIntoReadme(readme, block) {
 }
 
 async function main() {
+  if (!TOKEN) {
+    console.error("Missing GH_TOKEN environment variable.");
+    process.exit(1);
+  }
   const login = await resolveLogin();
   const stats = await buildStats(login);
 
@@ -354,17 +425,23 @@ async function main() {
   const { _calendar, ...publicStats } = stats;
   await writeFile(JSON_PATH, JSON.stringify(publicStats, null, 2) + "\n");
 
+  // Render the self-hosted stats SVG (served from raw.githubusercontent.com).
+  await writeFile(STATS_SVG_PATH, renderStatsSvg(publicStats));
+
   const readme = await readFile(README_PATH, "utf8");
   const updated = injectIntoReadme(readme, renderMarkdown(publicStats));
   await writeFile(README_PATH, updated);
 
-  console.log(
-    "Wrote stats.json, contribution-graph.svg, and updated README.md",
-  );
+  console.log("Wrote stats.json, stats.svg, and updated README.md");
   console.log(JSON.stringify(publicStats, null, 2));
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+export { renderStatsSvg, renderMarkdown };
+
+// Only run when invoked directly (not when imported for tests).
+if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}

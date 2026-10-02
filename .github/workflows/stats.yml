@@ -10,6 +10,11 @@ on:
     branches:
       - master
 
+# Prevent overlapping stats runs from racing each other on the same branch.
+concurrency:
+  group: stats-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   stats:
     permissions:
@@ -36,10 +41,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md stats.json
+          git add README.md stats.json stats.svg
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
             git commit -m "chore: update profile stats [skip ci]"
-            git push
+            # Remote master may have advanced since checkout; rebase our commit
+            # on top of the latest before pushing to avoid non-fast-forward.
+            git pull --rebase origin master
+            git push origin HEAD:master
           fi
