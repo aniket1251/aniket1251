@@ -4,17 +4,17 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/banner.svg" width="100%" alt="Aniket Gautam" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/banner.svg" width="100%" alt="Aniket Gautam" />
 
 <br>
 
-<a href="https://aniketgautam.vercel.app"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/link-portfolio.svg" alt="Portfolio" /></a>&nbsp;
-<a href="https://www.linkedin.com/in/aniket-gautam-3b9b69205/"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/link-linkedin.svg" alt="LinkedIn" /></a>&nbsp;
-<a href="mailto:ag125aa@gmail.com"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/link-email.svg" alt="Email" /></a>
+<a href="https://aniketgautam.vercel.app"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/link-portfolio.svg" alt="Portfolio" /></a>&nbsp;
+<a href="https://www.linkedin.com/in/aniket-gautam-3b9b69205/"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/link-linkedin.svg" alt="LinkedIn" /></a>&nbsp;
+<a href="mailto:ag125aa@gmail.com"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/link-email.svg" alt="Email" /></a>
 
 <br><br>
 
-<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/typing.svg" width="520" alt="Architecting systems that scale. Training models that learn. Writing code that lasts." />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/typing.svg" width="520" alt="Architecting systems that scale. Training models that learn. Writing code that lasts." />
 
 </div>
 
@@ -101,7 +101,7 @@ interests: [distributed systems, computer vision, MLOps, open source]
 <!--STATS:START-->
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/stats.svg?v=2026-10-02T08%3A11%3A05.547Z" alt="GitHub statistics" width="500" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/stats.svg?v=2026-10-02T08%3A11%3A05.547Z" alt="GitHub statistics" width="500" />
 
 </div>
 <!--STATS:END-->
@@ -133,6 +133,6 @@ interests: [distributed systems, computer vision, MLOps, open source]
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/footer.svg" width="100%" alt="Let's build something amazing" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/footer.svg" width="100%" alt="Let's build something amazing" />
 
 </div>

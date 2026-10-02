@@ -14,16 +14,18 @@
  *   GH_USER    GitHub username (defaults to token owner).
  */
 
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const TOKEN = process.env.GH_TOKEN;
 const README_PATH = "README.md";
 const JSON_PATH = "stats.json";
-const GRAPH_PATH = "contribution-graph.svg";
-const STATS_SVG_PATH = "stats.svg";
-const TYPING_SVG_PATH = "typing.svg";
-const BANNER_SVG_PATH = "banner.svg";
-const FOOTER_SVG_PATH = "footer.svg";
+// Directory where all generated SVGs are written (and committed).
+const SVG_DIR = "svg";
+const GRAPH_PATH = `${SVG_DIR}/contribution-graph.svg`;
+const STATS_SVG_PATH = `${SVG_DIR}/stats.svg`;
+const TYPING_SVG_PATH = `${SVG_DIR}/typing.svg`;
+const BANNER_SVG_PATH = `${SVG_DIR}/banner.svg`;
+const FOOTER_SVG_PATH = `${SVG_DIR}/footer.svg`;
 
 // Lines shown in the self-hosted typing animation.
 const TYPING_LINES = [
@@ -696,13 +698,16 @@ async function main() {
   const { _calendar, ...publicStats } = stats;
   await writeFile(JSON_PATH, JSON.stringify(publicStats, null, 2) + "\n");
 
+  // Ensure the output directory exists before writing any SVGs.
+  await mkdir(SVG_DIR, { recursive: true });
+
   // Render the self-hosted SVGs (served from raw.githubusercontent.com).
   await writeFile(STATS_SVG_PATH, renderStatsSvg(publicStats));
   await writeFile(TYPING_SVG_PATH, renderTypingSvg());
   await writeFile(BANNER_SVG_PATH, renderBannerSvg("header"));
   await writeFile(FOOTER_SVG_PATH, renderBannerSvg("footer"));
   for (const link of LINKS) {
-    await writeFile(link.file, renderLinkSvg(link));
+    await writeFile(`${SVG_DIR}/${link.file}`, renderLinkSvg(link));
   }
 
   const readme = await readFile(README_PATH, "utf8");
@@ -710,7 +715,7 @@ async function main() {
   await writeFile(README_PATH, updated);
 
   console.log(
-    "Wrote stats.json, stats.svg, typing.svg, banner.svg, footer.svg, link-*.svg, and updated README.md",
+    "Wrote stats.json, svg/stats.svg, svg/typing.svg, svg/banner.svg, svg/footer.svg, svg/link-*.svg, and updated README.md",
   );
   console.log(JSON.stringify(publicStats, null, 2));
 }
