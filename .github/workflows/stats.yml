@@ -18,9 +18,11 @@ concurrency:
 jobs:
   stats:
     permissions:
+      # contents:write lets the job commit the regenerated SVGs/README.
+      # The Traffic API (/traffic/views) in generate-views.mjs works with the
+      # built-in GITHUB_TOKEN because it already has admin access to its own
+      # repo — there is no "administration" scope in the permissions block.
       contents: write
-      # Required by the Traffic API (/traffic/views) used by generate-views.mjs.
-      administration: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
