@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="101" height="40" viewBox="0 0 101 40" role="img" aria-label="Email">
+  <style>
+    .lbl { font: 700 15px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; letter-spacing: 0.3px; }
+  </style>
+  <rect width="101" height="40" rx="8" fill="#6366f1"/>
+  <g transform="translate(14, 10) scale(0.8333333333333334)">
+    <g fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 6l9 7 9-7"/></g>
+  </g>
+  <text x="42" y="25" class="lbl">EMAIL</text>
+</svg>

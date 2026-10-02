@@ -37,11 +37,17 @@ jobs:
           GH_USER: ${{ github.repository_owner }}
         run: node scripts/generate-stats.mjs
 
+      - name: Generate profile views counter
+        env:
+          GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          GH_USER: ${{ github.repository_owner }}
+        run: node scripts/generate-views.mjs
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md stats.json stats.svg
+          git add README.md stats.json stats.svg typing.svg banner.svg footer.svg link-portfolio.svg link-linkedin.svg link-email.svg views.json views.svg
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else

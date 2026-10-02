@@ -21,6 +21,51 @@ const README_PATH = "README.md";
 const JSON_PATH = "stats.json";
 const GRAPH_PATH = "contribution-graph.svg";
 const STATS_SVG_PATH = "stats.svg";
+const TYPING_SVG_PATH = "typing.svg";
+const BANNER_SVG_PATH = "banner.svg";
+const FOOTER_SVG_PATH = "footer.svg";
+
+// Lines shown in the self-hosted typing animation.
+const TYPING_LINES = [
+  "Architecting systems that scale.",
+  "Training models that learn.",
+  "Writing code that lasts.",
+];
+
+// Header/footer banner text.
+const BANNER = {
+  title: "Aniket Gautam",
+  subtitle: "Software Engineer · ML Practitioner · System Architect",
+  footer: "Let's build something amazing",
+};
+
+// Social link badges, rendered as self-hosted SVGs with inline brand glyphs.
+// `svg` is the (24x24 viewBox) path/markup drawn in white at the pill's left.
+const LINKS = [
+  {
+    file: "link-portfolio.svg",
+    label: "Portfolio",
+    href: "https://aniketgautam.vercel.app",
+    // Vercel triangle
+    glyph: '<path d="M12 3L22 20H2L12 3Z" fill="#ffffff"/>',
+  },
+  {
+    file: "link-linkedin.svg",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/aniket-gautam-3b9b69205/",
+    // LinkedIn mark
+    glyph:
+      '<path fill="#ffffff" d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5.001zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-.95 1.82-1.95 3.75-1.95 4 0 4.4 2.5 4.4 5.8V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/>',
+  },
+  {
+    file: "link-email.svg",
+    label: "Email",
+    href: "mailto:ag125aa@gmail.com",
+    // Envelope: outlined body + stroked flap (no fill/stroke conflicts).
+    glyph:
+      '<g fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M3 6l9 7 9-7"/></g>',
+  },
+];
 
 // Raw GitHub base used to reference committed SVGs (self-hosted, no 3rd party).
 const RAW_BASE = process.env.GH_USER
@@ -305,6 +350,226 @@ function svgEscape(s) {
     .replace(/"/g, "&quot;");
 }
 
+// Waving-gradient banner (replaces capsule-render.vercel.app). `variant`:
+//   "header" — tall, title + subtitle
+//   "footer" — short, single centered line
+function renderBannerSvg(variant = "header") {
+  const width = 1200;
+  const height = variant === "header" ? 220 : 120;
+  const gradId = `g_${variant}`;
+  const waveId = `w_${variant}`;
+
+  // Animated wave: two stacked paths drifting horizontally for a "waving" feel.
+  const baseY = height - (variant === "header" ? 46 : 34);
+  const amp = 18;
+  const wavePath = (y) =>
+    `M0 ${y} C 300 ${y - amp}, 420 ${y + amp}, 600 ${y} S 900 ${y - amp}, 1200 ${y} V ${height} H 0 Z`;
+
+  const titleBlock =
+    variant === "header"
+      ? `
+  <text x="600" y="96" text-anchor="middle" class="bTitle">${svgEscape(BANNER.title)}</text>
+  <text x="600" y="130" text-anchor="middle" class="bSub">${svgEscape(BANNER.subtitle)}</text>`
+      : `
+  <text x="600" y="${Math.round(height * 0.46)}" text-anchor="middle" class="bFoot">${svgEscape(BANNER.footer)}</text>`;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${svgEscape(variant === "header" ? BANNER.title : BANNER.footer)}">
+  <defs>
+    <linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1b27"/>
+      <stop offset="25%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="75%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#1a1b27"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .bTitle { font: 700 54px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
+    .bSub { font: 400 17px 'Segoe UI', Ubuntu, sans-serif; fill: #e2e8f0; }
+    .bFoot { font: 600 22px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
+    @keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(-120px); } }
+    .wave { animation: drift 8s linear infinite; }
+  </style>
+  <rect width="${width}" height="${height}" fill="url(#${gradId})"/>
+  <g class="wave" opacity="0.30">
+    <path d="${wavePath(baseY)}" fill="#1a1b27"/>
+  </g>
+  <g opacity="0.45">
+    <path d="${wavePath(baseY + 14)}" fill="#1a1b27"/>
+  </g>
+  ${titleBlock}
+</svg>
+`;
+}
+
+// Social link badge pill (replaces shields.io). White brand glyph on the
+// left, label on the right, themed indigo background. Fully self-contained.
+function renderLinkSvg(link) {
+  const h = 40;
+  const padX = 14;
+  const glyphBox = 20;
+  const gap = 8;
+  const fontSize = 15;
+  const textW = Math.ceil(link.label.length * fontSize * 0.6);
+  const w = padX + glyphBox + gap + textW + padX;
+  const glyphX = padX;
+  const glyphY = (h - glyphBox) / 2;
+  const textX = padX + glyphBox + gap;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${svgEscape(link.label)}">
+  <style>
+    .lbl { font: 700 ${fontSize}px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; letter-spacing: 0.3px; }
+  </style>
+  <rect width="${w}" height="${h}" rx="8" fill="#6366f1"/>
+  <g transform="translate(${glyphX}, ${glyphY}) scale(${glyphBox / 24})">
+    ${link.glyph}
+  </g>
+  <text x="${textX}" y="${h / 2 + fontSize / 3}" class="lbl">${svgEscape(link.label.toUpperCase())}</text>
+</svg>
+`;
+}
+
+// Self-hosted typing animation (replaces readme-typing-svg.demolab.com).
+// Uses SMIL <animate> with discrete, character-aligned keyframes so the text
+// reveal and the caret move in perfect lock-step. GitHub runs SMIL inside
+// <img>-loaded SVGs (via the camo proxy), so no JavaScript is needed.
+//
+// Per line the timeline is: type (one char per tick) → hold → erase → idle.
+// The caret rides the exact reveal edge, blinks during the hold, and is
+// hidden while other lines are active.
+function renderTypingSvg(lines = TYPING_LINES) {
+  const height = 44;
+  const fontSize = 22;
+  const charW = fontSize * 0.6; // Fira Code advance ≈ 0.6em per glyph
+  const padL = 10;
+  const caretW = 2;
+  const baselineY = 29;
+  const caretY = 10;
+  const caretH = 24;
+
+  // Per-phase timing (seconds).
+  const typePerChar = 0.11;
+  const erasePerChar = 0.045;
+  const holdSecs = 1.4;
+  const gapSecs = 0.35; // brief empty beat between lines
+
+  const longest = Math.max(...lines.map((l) => l.length));
+  const width = Math.ceil(padL * 2 + longest * charW + caretW + 8);
+
+  // Build the global timeline so every line animates over one shared period T,
+  // each active only within its own [start, end] window.
+  const segs = [];
+  let t = 0;
+  for (const text of lines) {
+    const chars = text.length;
+    const type = chars * typePerChar;
+    const erase = chars * erasePerChar;
+    const start = t;
+    segs.push({ text, chars, start, type, hold: holdSecs, erase });
+    t += type + holdSecs + erase + gapSecs;
+  }
+  const T = t; // full loop duration
+
+  // Helper: format a number compactly.
+  const n = (x) => Number(x.toFixed(4));
+
+  const content = segs
+    .map((seg, i) => {
+      const clipId = `tclip${i}`;
+      const fullW = seg.chars * charW + caretW;
+      const edgeAt = (ch) => padL + ch * charW; // caret x after `ch` chars
+
+      // Discrete per-character keyTimes/values for the TYPE phase.
+      const kt = []; // keyTimes (0..1 across T)
+      const widthVals = []; // clip width
+      const caretVals = []; // caret x
+      const push = (time, w, cx) => {
+        kt.push(n(Math.min(1, Math.max(0, time / T))));
+        widthVals.push(n(w));
+        caretVals.push(n(cx));
+      };
+
+      // Before this line's window: collapsed + caret parked at left.
+      if (seg.start > 0) push(0, 0, padL);
+      push(seg.start, 0, padL);
+
+      // Typing: reveal one character per tick (discrete).
+      for (let c = 1; c <= seg.chars; c++) {
+        const time = seg.start + c * typePerChar;
+        push(time, c * charW + caretW, edgeAt(c));
+      }
+
+      // Hold: everything stays put.
+      const holdEnd = seg.start + seg.type + seg.hold;
+      push(holdEnd, fullW, edgeAt(seg.chars));
+
+      // Erasing: retreat one character per tick (discrete).
+      for (let c = seg.chars - 1; c >= 0; c--) {
+        const done = seg.chars - c; // chars erased so far
+        const time = holdEnd + done * erasePerChar;
+        push(time, c * charW + (c > 0 ? caretW : 0), edgeAt(c));
+      }
+
+      // Idle until the loop ends.
+      push(T, 0, padL);
+
+      const keyTimes = kt.join(";");
+      const widthStr = widthVals.join(";");
+      const caretStr = caretVals.join(";");
+
+      // Caret visible only during this line's active window (incl. hold).
+      // Build a strictly non-decreasing keyTimes list (dedup equal stamps).
+      const visStart = seg.start / T;
+      const visEnd = (holdEnd + seg.erase) / T;
+      const visStops = [];
+      const addStop = (time, val) => {
+        const tt = n(Math.min(1, Math.max(0, time)));
+        const last = visStops[visStops.length - 1];
+        if (last && last.t === tt) {
+          last.v = val; // same timestamp → keep latest value
+        } else {
+          visStops.push({ t: tt, v: val });
+        }
+      };
+      addStop(0, "0");
+      addStop(visStart, "1");
+      addStop(visEnd, "0");
+      if (visStops[visStops.length - 1].t < 1) addStop(1, "0");
+      const visKeyTimes = visStops.map((s) => s.t).join(";");
+      const visValues = visStops.map((s) => s.v).join(";");
+
+      return `
+    <clipPath id="${clipId}">
+      <rect x="${padL}" y="0" width="0" height="${height}">
+        <animate attributeName="width" dur="${n(T)}s" repeatCount="indefinite"
+                 calcMode="discrete" keyTimes="${keyTimes}" values="${widthStr}"/>
+      </rect>
+    </clipPath>
+    <text x="${padL}" y="${baselineY}" class="type" clip-path="url(#${clipId})">${svgEscape(seg.text)}</text>
+    <g opacity="0">
+      <animate attributeName="opacity" dur="${n(T)}s" repeatCount="indefinite"
+               calcMode="discrete" keyTimes="${visKeyTimes}" values="${visValues}"/>
+      <rect class="caret" x="0" y="${caretY}" width="${caretW}" height="${caretH}">
+        <animate attributeName="x" dur="${n(T)}s" repeatCount="indefinite"
+                 calcMode="discrete" keyTimes="${keyTimes}" values="${caretStr}"/>
+        <animate attributeName="opacity" dur="1s" repeatCount="indefinite"
+                 calcMode="discrete" keyTimes="0;0.5;1" values="1;0;1"/>
+      </rect>
+    </g>`;
+    })
+    .join("\n");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${svgEscape(lines.join(" "))}">
+  <style>
+    .type { font: 500 ${fontSize}px 'Fira Code', 'JetBrains Mono', 'Courier New', monospace; fill: #a855f7; }
+    .caret { fill: #a855f7; }
+  </style>
+  <rect width="${width}" height="${height}" fill="none"/>
+  ${content}
+</svg>
+`;
+}
+
 // Render the whole stats block as a single self-hosted SVG.
 // No third-party services — committed and served from raw.githubusercontent.com.
 function renderStatsSvg(stats) {
@@ -425,18 +690,33 @@ async function main() {
   const { _calendar, ...publicStats } = stats;
   await writeFile(JSON_PATH, JSON.stringify(publicStats, null, 2) + "\n");
 
-  // Render the self-hosted stats SVG (served from raw.githubusercontent.com).
+  // Render the self-hosted SVGs (served from raw.githubusercontent.com).
   await writeFile(STATS_SVG_PATH, renderStatsSvg(publicStats));
+  await writeFile(TYPING_SVG_PATH, renderTypingSvg());
+  await writeFile(BANNER_SVG_PATH, renderBannerSvg("header"));
+  await writeFile(FOOTER_SVG_PATH, renderBannerSvg("footer"));
+  for (const link of LINKS) {
+    await writeFile(link.file, renderLinkSvg(link));
+  }
 
   const readme = await readFile(README_PATH, "utf8");
   const updated = injectIntoReadme(readme, renderMarkdown(publicStats));
   await writeFile(README_PATH, updated);
 
-  console.log("Wrote stats.json, stats.svg, and updated README.md");
+  console.log(
+    "Wrote stats.json, stats.svg, typing.svg, banner.svg, footer.svg, link-*.svg, and updated README.md",
+  );
   console.log(JSON.stringify(publicStats, null, 2));
 }
 
-export { renderStatsSvg, renderMarkdown };
+export {
+  renderStatsSvg,
+  renderMarkdown,
+  renderTypingSvg,
+  renderBannerSvg,
+  renderLinkSvg,
+  LINKS,
+};
 
 // Only run when invoked directly (not when imported for tests).
 if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {

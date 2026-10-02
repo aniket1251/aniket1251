@@ -4,17 +4,17 @@
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1b27,25:6366f1,50:a855f7,75:6366f1,100:1a1b27&height=220&section=header&text=Aniket%20Gautam&fontSize=50&fontAlignY=35&fontColor=ffffff&animation=fadeIn&desc=Software%20Engineer%20%C2%B7%20ML%20Practitioner%20%C2%B7%20System%20Architect&descSize=16&descAlignY=55&descColor=e2e8f0" width="100%" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/banner.svg" width="100%" alt="Aniket Gautam" />
 
 <br>
 
-<a href="https://aniketgautam.vercel.app"><img src="https://img.shields.io/badge/Portfolio-6366f1?style=for-the-badge&logo=vercel&logoColor=white" /></a>&nbsp;
-<a href="https://www.linkedin.com/in/aniket-gautam-3b9b69205/"><img src="https://img.shields.io/badge/LinkedIn-6366f1?style=for-the-badge&logo=linkedin&logoColor=white" /></a>&nbsp;
-<a href="mailto:ag125aa@gmail.com"><img src="https://img.shields.io/badge/Email-6366f1?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+<a href="https://aniketgautam.vercel.app"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/link-portfolio.svg" alt="Portfolio" /></a>&nbsp;
+<a href="https://www.linkedin.com/in/aniket-gautam-3b9b69205/"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/link-linkedin.svg" alt="LinkedIn" /></a>&nbsp;
+<a href="mailto:ag125aa@gmail.com"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/link-email.svg" alt="Email" /></a>
 
 <br><br>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=22&duration=3000&pause=1000&color=A855F7&center=true&vCenter=true&repeat=true&width=500&height=30&lines=Architecting+systems+that+scale.;Training+models+that+learn.;Writing+code+that+lasts." />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/typing.svg" width="520" alt="Architecting systems that scale. Training models that learn. Writing code that lasts." />
 
 </div>
 
@@ -133,10 +133,10 @@ interests: [distributed systems, computer vision, MLOps, open source]
 
 <div align="center">
 
-<a href="https://github.com/aniket1251"><img src="https://komarev.com/ghpvc/?username=aniket1251&style=flat-square&color=6366f1&label=Profile+Views" /></a>
+<a href="https://github.com/aniket1251"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/views.svg" alt="Profile Views" /></a>
 
 <br><br>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a1b27,25:6366f1,50:a855f7,75:6366f1,100:1a1b27&section=footer&height=100&text=Let's%20build%20something%20amazing&fontSize=20&fontAlignY=75&fontColor=ffffff&animation=fadeIn" width="100%" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/footer.svg" width="100%" alt="Let's build something amazing" />
 
 </div>
