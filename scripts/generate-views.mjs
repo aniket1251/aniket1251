@@ -144,13 +144,24 @@ async function main() {
   const login = await resolveLogin();
   const repo = login; // the <user>/<user> profile repo
 
-  // Fetch the last 14 days of traffic for the profile repo.
+  // Fetch the last 14 days of traffic for the profile repo. The Traffic API
+  // requires "Administration: read" on the repo — a read-only/public token
+  // returns 403/404 here, which would otherwise silently keep the total at 0.
   const traffic = await gh(`/repos/${login}/${repo}/traffic/views`);
+
+  const newDays = traffic.views ?? [];
+  if (newDays.length === 0) {
+    console.warn(
+      `Traffic API returned no daily buckets for ${login}/${repo}. ` +
+        `This is normal only if the repo truly had zero views in the last 14 days. ` +
+        `If you expected views, check that the token has Administration:read access.`,
+    );
+  }
 
   // Merge the daily buckets into persisted history, keyed by ISO date so
   // overlapping runs overwrite the same day (no double counting).
   const { days } = await loadHistory();
-  for (const d of traffic.views ?? []) {
+  for (const d of newDays) {
     const date = d.timestamp.slice(0, 10); // YYYY-MM-DD
     days[date] = { count: d.count, uniques: d.uniques };
   }

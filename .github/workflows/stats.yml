@@ -19,6 +19,8 @@ jobs:
   stats:
     permissions:
       contents: write
+      # Required by the Traffic API (/traffic/views) used by generate-views.mjs.
+      administration: read
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -38,8 +40,10 @@ jobs:
         run: node scripts/generate-stats.mjs
 
       - name: Generate profile views counter
+        # Uses the built-in GITHUB_TOKEN, which has admin (traffic) access to
+        # this repo. A read-only PAT would 403 on the Traffic API.
         env:
-          GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USER: ${{ github.repository_owner }}
         run: node scripts/generate-views.mjs
 
