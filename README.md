@@ -133,10 +133,6 @@ interests: [distributed systems, computer vision, MLOps, open source]
 
 <div align="center">
 
-<a href="https://github.com/aniket1251"><img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/views.svg" alt="Profile Views" /></a>
-
-<br><br>
-
 <img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/footer.svg" width="100%" alt="Let's build something amazing" />
 
 </div>

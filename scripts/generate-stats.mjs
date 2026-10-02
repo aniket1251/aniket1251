@@ -350,54 +350,60 @@ function svgEscape(s) {
     .replace(/"/g, "&quot;");
 }
 
-// Waving-gradient banner (replaces capsule-render.vercel.app). `variant`:
+// Minimal gradient banner (replaces capsule-render.vercel.app). `variant`:
 //   "header" — tall, title + subtitle
 //   "footer" — short, single centered line
+//
+// Kept intentionally minimal: a themed gradient, clipped rounded corners,
+// and a single slow, low-opacity sheen sweep. Animation uses SMIL (not CSS
+// @keyframes), since GitHub's SVG sanitizer strips <style> animations when
+// the image is served through its camo proxy.
 function renderBannerSvg(variant = "header") {
   const width = 1200;
   const height = variant === "header" ? 220 : 120;
   const gradId = `g_${variant}`;
-  const waveId = `w_${variant}`;
+  const sheenId = `sheen_${variant}`;
+  const clipId = `round_${variant}`;
+  const label = svgEscape(variant === "header" ? BANNER.title : BANNER.footer);
 
-  // Animated wave: two stacked paths drifting horizontally for a "waving" feel.
-  const baseY = height - (variant === "header" ? 46 : 34);
-  const amp = 18;
-  const wavePath = (y) =>
-    `M0 ${y} C 300 ${y - amp}, 420 ${y + amp}, 600 ${y} S 900 ${y - amp}, 1200 ${y} V ${height} H 0 Z`;
+  const sheenW = variant === "header" ? 360 : 340;
 
   const titleBlock =
     variant === "header"
       ? `
-  <text x="600" y="96" text-anchor="middle" class="bTitle">${svgEscape(BANNER.title)}</text>
-  <text x="600" y="130" text-anchor="middle" class="bSub">${svgEscape(BANNER.subtitle)}</text>`
+    <text x="600" y="98" text-anchor="middle"
+      font-family="'Segoe UI', Ubuntu, Helvetica, Arial, sans-serif" font-weight="700" font-size="54" fill="#ffffff">${svgEscape(BANNER.title)}</text>
+    <text x="600" y="138" text-anchor="middle"
+      font-family="'Segoe UI', Ubuntu, Helvetica, Arial, sans-serif" font-weight="400" font-size="17" fill="#e2e8f0" letter-spacing="0.5">${svgEscape(BANNER.subtitle)}</text>`
       : `
-  <text x="600" y="${Math.round(height * 0.46)}" text-anchor="middle" class="bFoot">${svgEscape(BANNER.footer)}</text>`;
+    <text x="600" y="54" text-anchor="middle"
+      font-family="'Segoe UI', Ubuntu, Helvetica, Arial, sans-serif" font-weight="600" font-size="26" fill="#ffffff" letter-spacing="0.5">${svgEscape(BANNER.footer)}</text>`;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${svgEscape(variant === "header" ? BANNER.title : BANNER.footer)}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${label}">
+  <title>${label}</title>
   <defs>
     <linearGradient id="${gradId}" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#1a1b27"/>
-      <stop offset="25%" stop-color="#6366f1"/>
+      <stop offset="30%" stop-color="#6366f1"/>
       <stop offset="50%" stop-color="#a855f7"/>
-      <stop offset="75%" stop-color="#6366f1"/>
+      <stop offset="70%" stop-color="#6366f1"/>
       <stop offset="100%" stop-color="#1a1b27"/>
     </linearGradient>
+    <linearGradient id="${sheenId}_grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="${clipId}">
+      <rect width="${width}" height="${height}" rx="16" ry="16"/>
+    </clipPath>
   </defs>
-  <style>
-    .bTitle { font: 700 54px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
-    .bSub { font: 400 17px 'Segoe UI', Ubuntu, sans-serif; fill: #e2e8f0; }
-    .bFoot { font: 600 22px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
-    @keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(-120px); } }
-    .wave { animation: drift 8s linear infinite; }
-  </style>
-  <rect width="${width}" height="${height}" fill="url(#${gradId})"/>
-  <g class="wave" opacity="0.30">
-    <path d="${wavePath(baseY)}" fill="#1a1b27"/>
+  <g clip-path="url(#${clipId})">
+    <rect width="${width}" height="${height}" fill="url(#${gradId})"/>
+    <rect width="${sheenW}" height="${height}" fill="url(#${sheenId}_grad)">
+      <animate attributeName="x" values="-${sheenW};${width}" dur="9s" begin="0s;${sheenId}.end+5s" id="${sheenId}"/>
+    </rect>${titleBlock}
   </g>
-  <g opacity="0.45">
-    <path d="${wavePath(baseY + 14)}" fill="#1a1b27"/>
-  </g>
-  ${titleBlock}
 </svg>
 `;
 }

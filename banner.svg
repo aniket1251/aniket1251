@@ -1,28 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="220" viewBox="0 0 1200 220" role="img" aria-label="Aniket Gautam">
+  <title>Aniket Gautam</title>
   <defs>
     <linearGradient id="g_header" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#1a1b27"/>
-      <stop offset="25%" stop-color="#6366f1"/>
+      <stop offset="30%" stop-color="#6366f1"/>
       <stop offset="50%" stop-color="#a855f7"/>
-      <stop offset="75%" stop-color="#6366f1"/>
+      <stop offset="70%" stop-color="#6366f1"/>
       <stop offset="100%" stop-color="#1a1b27"/>
     </linearGradient>
+    <linearGradient id="sheen_header_grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="round_header">
+      <rect width="1200" height="220" rx="16" ry="16"/>
+    </clipPath>
   </defs>
-  <style>
-    .bTitle { font: 700 54px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
-    .bSub { font: 400 17px 'Segoe UI', Ubuntu, sans-serif; fill: #e2e8f0; }
-    .bFoot { font: 600 22px 'Segoe UI', Ubuntu, sans-serif; fill: #ffffff; }
-    @keyframes drift { 0% { transform: translateX(0); } 100% { transform: translateX(-120px); } }
-    .wave { animation: drift 8s linear infinite; }
-  </style>
-  <rect width="1200" height="220" fill="url(#g_header)"/>
-  <g class="wave" opacity="0.30">
-    <path d="M0 174 C 300 156, 420 192, 600 174 S 900 156, 1200 174 V 220 H 0 Z" fill="#1a1b27"/>
+  <g clip-path="url(#round_header)">
+    <rect width="1200" height="220" fill="url(#g_header)"/>
+    <rect width="360" height="220" fill="url(#sheen_header_grad)">
+      <animate attributeName="x" values="-360;1200" dur="9s" begin="0s;sheen_header.end+5s" id="sheen_header"/>
+    </rect>
+    <text x="600" y="98" text-anchor="middle"
+      font-family="'Segoe UI', Ubuntu, Helvetica, Arial, sans-serif" font-weight="700" font-size="54" fill="#ffffff">Aniket Gautam</text>
+    <text x="600" y="138" text-anchor="middle"
+      font-family="'Segoe UI', Ubuntu, Helvetica, Arial, sans-serif" font-weight="400" font-size="17" fill="#e2e8f0" letter-spacing="0.5">Software Engineer · ML Practitioner · System Architect</text>
   </g>
-  <g opacity="0.45">
-    <path d="M0 188 C 300 170, 420 206, 600 188 S 900 170, 1200 188 V 220 H 0 Z" fill="#1a1b27"/>
-  </g>
-  
-  <text x="600" y="96" text-anchor="middle" class="bTitle">Aniket Gautam</text>
-  <text x="600" y="130" text-anchor="middle" class="bSub">Software Engineer · ML Practitioner · System Architect</text>
 </svg>

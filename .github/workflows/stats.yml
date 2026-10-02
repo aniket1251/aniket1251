@@ -19,9 +19,6 @@ jobs:
   stats:
     permissions:
       # contents:write lets the job commit the regenerated SVGs/README.
-      # The Traffic API (/traffic/views) in generate-views.mjs works with the
-      # built-in GITHUB_TOKEN because it already has admin access to its own
-      # repo — there is no "administration" scope in the permissions block.
       contents: write
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -41,21 +38,11 @@ jobs:
           GH_USER: ${{ github.repository_owner }}
         run: node scripts/generate-stats.mjs
 
-      - name: Generate profile views counter
-        # The Traffic API (/traffic/views) requires push/admin access, which
-        # the built-in GITHUB_TOKEN does NOT have — it 403s with "Resource not
-        # accessible by integration". A PAT that owns the repo (METRICS_TOKEN)
-        # does have that access, so use it here.
-        env:
-          GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
-          GH_USER: ${{ github.repository_owner }}
-        run: node scripts/generate-views.mjs
-
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md stats.json stats.svg typing.svg banner.svg footer.svg link-portfolio.svg link-linkedin.svg link-email.svg views.json views.svg
+          git add README.md stats.json stats.svg typing.svg banner.svg footer.svg link-portfolio.svg link-linkedin.svg link-email.svg
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
