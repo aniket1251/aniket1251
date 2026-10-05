@@ -12,7 +12,7 @@
   <text x="24" y="40" class="title">GitHub Analytics</text>
   
     <text x="24" y="78" class="label">Commits</text>
-    <text x="476" y="78" class="value" fill="#6366f1" text-anchor="end">563</text>
+    <text x="476" y="78" class="value" fill="#6366f1" text-anchor="end">564</text>
     <line x1="24" y1="88" x2="476" y2="88" class="divider"/>
     <text x="24" y="112" class="label">Stars</text>
     <text x="476" y="112" class="value" fill="#a855f7" text-anchor="end">6</text>
@@ -21,7 +21,7 @@
     <text x="476" y="146" class="value" fill="#6366f1" text-anchor="end">3</text>
     <line x1="24" y1="156" x2="476" y2="156" class="divider"/>
     <text x="24" y="180" class="label">Watchers</text>
-    <text x="476" y="180" class="value" fill="#a855f7" text-anchor="end">13</text>
+    <text x="476" y="180" class="value" fill="#a855f7" text-anchor="end">1</text>
     <line x1="24" y1="190" x2="476" y2="190" class="divider"/>
     <text x="24" y="214" class="label">Followers</text>
     <text x="476" y="214" class="value" fill="#6366f1" text-anchor="end">3</text>
