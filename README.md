@@ -101,7 +101,7 @@ interests: [distributed systems, computer vision, MLOps, open source]
 <!--STATS:START-->
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/stats.svg?v=2026-11-08T20%3A12%3A46.058Z" alt="GitHub statistics" width="500" />
+<img src="https://raw.githubusercontent.com/aniket1251/aniket1251/master/svg/stats.svg?v=2026-11-09T04%3A46%3A09.084Z" alt="GitHub statistics" width="500" />
 
 </div>
 <!--STATS:END-->
